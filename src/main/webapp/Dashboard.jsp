@@ -53,6 +53,25 @@
             background-color: #d32f2f;
         }
 
+        /* User Information Section */
+        .user-info {
+            background-color: #e8f5e9; /* Light Green Background */
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border: 2px solid #4CAF50;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-info p {
+            font-size: 16px;
+            color: #555;
+            margin: 5px 0;
+        }
+
         /* Balance Section */
         .balance-section {
             background-color: #e8f5e9; /* Light Green Background */
@@ -173,9 +192,24 @@
     <div class="container">
         <!-- Header Section -->
         <div class="header">
-            <h2>Payments Web App</h2>
-            <p>Welcome <%= session.getAttribute("userFullName") %></p>
+            <h2>Payment Web App</h2>
+           
             <a href="logout.jsp" class="logout">Logout</a>
+        </div>
+
+        <!-- User Information Section -->
+        <% 
+            String fullName = (String) session.getAttribute("firstname");
+       
+            String email = (String) session.getAttribute("email");
+            String phone = (String) session.getAttribute("phonenumber");
+        %>
+        <div class="user-info">
+            <h2>User information</h2>
+            <p><strong>Full Name:</strong> <%= fullName %></p>
+         
+            <p><strong>Email:</strong> <%= email %></p>
+            <p><strong>Phone:</strong> <%= phone %></p>
         </div>
 
         <!-- Balance Section -->
@@ -188,7 +222,7 @@
                 <p><strong>Account Balance:</strong> ₹8000.00</p>
                 <p><strong>Wallet Balance:</strong> ₹2000.00</p>
             </div>
-            <a href="sendMoney.jsp">
+            <a href="sendmoney.jsp">
                 <button class="send-money-btn">Send Money</button>
             </a>
         </div>
@@ -205,7 +239,7 @@
             </div>
 
             <div class="bank-card">
-                <a href="AddBank.jsp" class="addbankaccount">[+] Add New Bank Account</a>
+                <a href="addbankaccount.jsp" class="addbankaccount">[+] Add New Bank Account</a>
             </div>
         </div>
 
@@ -217,7 +251,7 @@
                 <p>₹1200 received from LATHA</p>
                 <p>₹5000 received from Sister</p>
                 <p>...</p>
-                <a href="DetailedStatement" class="detailed-stmt">Detailed Statement</a>
+                <a href="Detailedstatement" class="detailed-stmt">Detailed Statement</a>
             </div>
         </div>
     </div>

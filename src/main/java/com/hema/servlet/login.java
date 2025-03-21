@@ -49,6 +49,10 @@ public class login extends HttpServlet {
             if (rs.next()) {
                 HttpSession session = request.getSession();
                 session.setAttribute("uname", uname);
+                session.setAttribute("firstname", rs.getString(2));
+                session.setAttribute("email", rs.getString(5));
+                session.setAttribute("phonenumber", rs.getString(6));
+                
                 response.sendRedirect("Dashboard.jsp");
             } else {
                 request.setAttribute("errorMessage", "Invalid Credentials");
